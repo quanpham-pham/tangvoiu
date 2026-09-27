@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gửi vợ iu...</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #ffe6ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        /* Khung chứa từng màn hình */
+        .screen {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0; left: 0;
+            background-color: #ffe6ea;
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            display: none !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Giao diện thẻ bài bo tròn */
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        h1 { color: #ff4d6d; font-size: 24px; margin-bottom: 20px; line-height: 1.4; }
+        p { color: #555; font-size: 18px; margin-bottom: 25px; line-height: 1.6; font-weight: 500;}
+        
+        /* Cấu hình Nút bấm */
+        .btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%;
+            margin-bottom: 15px;
+            display: block;
+            background-color: #ff4d6d; 
+            color: white; 
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn:active { transform: scale(0.95); }
+        
+        /* Hiệu ứng thư đập */
+        .envelope { font-size: 80px; cursor: pointer; animation: beat 1.5s infinite; margin-bottom: 10px; }
+        
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Icon trang trí */
+        .icon-deco { font-size: 50px; margin-bottom: 15px; }
+
+        /* Chữ nhấn mạnh ở màn hình cuối */
+        .highlight-text {
+            color: #ff4d6d;
+            font-size: 19px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- THẺ AUDIO ĐỂ PHÁT NHẠC -->
+    <audio id="bgMusic" loop>
+        <source src="Cưới Thôi.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BƯỚC 0: Mở đầu bằng thư -->
+    <div id="screen-0" class="screen">
+        <div class="card">
+            <h1>Mình có một bí mật...</h1>
+            <div class="envelope" onclick="nextScreen(0, 1)">💌</div>
+            <p style="margin-bottom: 0; font-size: 16px;">Chạm vào thư để mở nhé!</p>
+        </div>
+    </div>
+
+    <!-- BƯỚC 1: Đoạn 1 -->
+    <div id="screen-1" class="screen hidden">
+        <div class="card">
+            <div class="icon-deco">🌸</div>
+            <p>Người ta bảo yêu nhau rồi thì cần gì tỏ tình nữa, nhưng mình thì không nghĩ thế...</p>
+            <p>Công chúa của mình xứng đáng có được một lời tỏ tình đàng hoàng và trọn vẹn nhất.</p>
+            <button class="btn" onclick="nextScreen(1, 2)">Đọc tiếp nha 🥰</button>
+        </div>
+    </div>
+
+    <!-- BƯỚC 2: Đoạn 2 -->
+    <div id="screen-2" class="screen hidden">
+        <div class="card">
+            <div class="icon-deco">✨</div>
+            <p>Bọn mình đã đi cùng nhau một đoạn đường rồi, vui có, buồn có...</p>
+            <p>Nhưng hình như mình vẫn nợ bạn iu một sự xác nhận, một câu nói chính thức.</p>
+            <button class="btn" onclick="nextScreen(2, 3)">Và hôm nay... ❤️</button>
+        </div>
+    </div>
+
+    <!-- BƯỚC 3: Đoạn 3 -->
+    <div id="screen-3" class="screen hidden">
+        <div class="card">
+            <div class="icon-deco">🥺</div>
+            <p>Mình đã gom hết sự chân thành này để bù đắp cho bạn...</p>
+            <p>Bởi vì mình muốn được đường đường chính chính làm người yêu, làm điểm tựa của bạn!</p>
+            <button class="btn" onclick="nextScreen(3, 4)">Mở xem 🫣</button>
+        </div>
+    </div>
+
+    <!-- BƯỚC 4: Chốt hạ (Bạn xuất hiện ngoài đời) -->
+    <div id="screen-4" class="screen hidden">
+        <div class="card">
+            <div class="icon-deco" style="font-size: 70px; animation: beat 1s infinite;">💐</div>
+            <p class="highlight-text">
+                Đây chỉ là nơi chia sẻ những thứ mình muốn nói và tạo bất ngờ cho bạn.
+            </p>
+            <p class="highlight-text">
+                Bây giờ bạn hãy nhìn ra ngoài điện thoại đi ạ, sẽ có 1 bất ngờ đặc biệt khác dành cho bạn iu á...
+            </p>
+            <p style="font-size: 16px; color: #555; margin-top: 10px;">
+                Những lời mà chẳng thể nào diễn tả hết thông qua những dòng chữ này được 🥰
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Hàm chuyển các màn hình cực mượt
+        function nextScreen(current, next) {
+            // Phát nhạc khi mở thư
+            if (current === 0) {
+                const bgMusic = document.getElementById('bgMusic');
+                bgMusic.volume = 0.5;
+                bgMusic.play().catch(e => console.log("Trình duyệt chặn phát nhạc tự động"));
+            }
+
+            document.getElementById(`screen-${current}`).classList.add('hidden');
+            document.getElementById(`screen-${next}`).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
